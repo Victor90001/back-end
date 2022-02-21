@@ -1,0 +1,24 @@
+1) GET / HTTP/1.0
+2) 
+GET /back-end/2/files/index.php HTTP/1.1
+Host: u41026.kubsu-dev.ru
+3)
+HEAD /back-end/2/files/file.tar.gz HTTP/1.1
+Host: u41026.kubsu-dev.ru
+4)
+HEAD /back-end/2/files/image.png HTTP/1.1
+Host: u41026.kubsu-dev.ru
+5)
+POST /back-end/2/files/index.php HTTP/1.1
+Host: u41026.kubsu-dev.ru
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 40
+
+param1=Hello&param2=World
+6)
+GET /back-end/2/files/file.tar.gz HTTP/1.1
+Host: u41026.kubsu-dev.ru
+Range: bytes=0-99
+7)
+HEAD /back-end/2/files/index.php HTTP/1.1
+Host: u41026.kubsu-dev.ru
