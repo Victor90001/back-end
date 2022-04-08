@@ -37,7 +37,7 @@ if ($_POST['year']<1922 or $_POST['year']>2022){
   print_r('Заполните год рождения.<br/>');
   $errors = TRUE;
 }
-if ($_POST['sex']!='male' and $_POST['sex']!='female'){
+if ($_POST['sex']!='M' and $_POST['sex']!='W'){
   print_r('Выберите пол.<br/>');
   $errors = TRUE;
 }
@@ -46,7 +46,7 @@ if ($_POST['limb']<1 or $_POST['limb']>4){
   $errors = TRUE;
 }
 foreach($_POST['power'] as $power){
-  if($power!='1' and $power!='2' and $power!='3'){
+  if($power!='бессмертие' and $power!='прохождение сквозь стены' and $power!='левитация'){
     print_r('Выберите хотя бы одну суперспособность.<br/>');
     $errors=TRUE;
   }
@@ -74,12 +74,7 @@ try {
   $stmt->bindParam(':name',$_POST['fio']);
   $stmt->bindParam(':mail',$_POST['mail']);
   $stmt->bindParam(':date',$_POST['year']);
-  if ($_POST['sex']=='male'){
-    $stmt->bindParam(':sex','M');
-  }
-  else{
-    $stmt->bindParam(':sex','W');
-  }
+  $stmt->bindParam(':sex',$_POST['sex']);
   $stmt->bindParam(':limb',$_POST['limb']);
   $stmt->bindParam(':bio',$_POST['bio']);
   $stmt -> execute();

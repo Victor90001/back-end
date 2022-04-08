@@ -23,8 +23,8 @@
     <!--<input name="year" type="date" /> <br>-->
     <label> Ваш пол </label> <br>
     <div>
-      <input name="sex" type="radio" value="male" /> Мужчина
-      <input name="sex" type="radio" value="female" /> Женщина
+      <input name="sex" type="radio" value="M" /> Мужчина
+      <input name="sex" type="radio" value="W" /> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div>
@@ -35,9 +35,9 @@
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="power[]" size="3" multiple>
-      <option value="1">Бессмертие</option>
-      <option value="2">Прохождение сквозь стены</option>
-      <option value="3">Левитация</option>
+      <option value="бессмертие">Бессмертие</option>
+      <option value="прохождение сквозь стены">Прохождение сквозь стены</option>
+      <option value="левитация">Левитация</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"></textarea> <br>
