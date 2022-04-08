@@ -37,7 +37,7 @@ if ($_POST['year']<1922 or $_POST['year']>2022){
   print_r('Заполните год рождения.<br/>');
   $errors = TRUE;
 }
-if ($_POST['sex']){
+if ($_POST['sex']!='male' and $_POST['sex']!='female'){
   print_r('Выберите пол.<br/>');
   $errors = TRUE;
 }
