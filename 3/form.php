@@ -14,6 +14,7 @@
     <input name="mail" type="email" /> <br>
     <label> Год рождения </label> <br>
     <select name="year">
+      <option value="Выбрать">Выбрать</option>
     <?php
         for($i=1890;$i<=2022;$i++){
           printf("<option value=%d>%d год</option>",$i,$i);

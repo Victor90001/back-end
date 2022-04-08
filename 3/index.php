@@ -33,7 +33,7 @@ if (empty($_POST['mail'])){
   print_r('Заполните почту.<br/>');
   $errors = TRUE;
 }
-if ($_POST['year']<1922 or $_POST['year']>2022){
+if ($_POST['year']=='Выбрать'){
   print_r('Заполните год рождения.<br/>');
   $errors = TRUE;
 }
