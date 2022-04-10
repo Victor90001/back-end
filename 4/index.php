@@ -53,14 +53,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values = array();
   $values['fio'] = empty($_COOKIE['fio_value']) ? '' : $_COOKIE['fio_value'];
   $values['mail'] = empty($_COOKIE['mail_value']) ? '' : $_COOKIE['mail_value'];
-  $values['year'] = empty($_COOKIE['year_value']) ? '' : $_COOKIE['year_value'];
+  $values['year'] = empty($_COOKIE['year_value']) ? 0 : $_COOKIE['year_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['immortal'] = empty($_COOKIE['immortal_value']) ? '' : $_COOKIE['immortal_value'];
-  $values['ghost'] = empty($_COOKIE['ghost_value']) ? '' : $_COOKIE['ghost_value'];
-  $values['levitation'] = empty($_COOKIE['levitation_value']) ? '' : $_COOKIE['levitation_value'];
+  $values['immortal'] = empty($_COOKIE['immortal_value']) ? 0 : $_COOKIE['immortal_value'];
+  $values['ghost'] = empty($_COOKIE['ghost_value']) ? 0 : $_COOKIE['ghost_value'];
+  $values['levitation'] = empty($_COOKIE['levitation_value']) ? 0 : $_COOKIE['levitation_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
-  $values['privacy'] = empty($_COOKIE['privacy_value']) ? '' : $_COOKIE['privacy_value'];
+  $values['privacy'] = empty($_COOKIE['privacy_value']) ? FALSE : $_COOKIE['privacy_value'];
 
   include('form.php');
 }
