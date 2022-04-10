@@ -141,9 +141,7 @@ else {
   setcookie('year_error', '', 100000);
   setcookie('sex_error', '', 100000);
   setcookie('limb_error', '', 100000);
-  setcookie('immortal_error', '', 100000);
-  setcookie('ghost_error', '', 100000);
-  setcookie('levitation_error', '', 100000);
+  setcookie('powers_error', '', 100000);
   setcookie('bio_error', '', 100000);
   setcookie('privacy_error', '', 100000);
 }
