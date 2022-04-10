@@ -31,7 +31,7 @@ if (!empty($messages)) {
     <?php
         for($i=1890;$i<=2022;$i++){
           if($values['year']==$i){
-            printf("<option value=%d select=selected>%d год</option>",$i,$i);
+            printf("<option value=%d selected>%d год</option>",$i,$i);
           }
           else{
             printf("<option value=%d>%d год</option>",$i,$i);
@@ -54,13 +54,13 @@ if (!empty($messages)) {
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="power[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
-      <option value="бессмертие" <?php if($values['immortal']==1){print 'select="selected"';}) ?>>Бессмертие</option>
-      <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'select="selected"';}) ?>>Прохождение сквозь стены</option>
-      <option value="левитация" <?php if($values['levitation']==1){print 'select="selected"';}) ?>>Левитация</option>
+      <option value="бессмертие" <?php if($values['immortal']==1){print 'selected';} ?>>Бессмертие</option>
+      <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'selected';} ?>>Прохождение сквозь стены</option>
+      <option value="левитация" <?php if($values['levitation']==1){print 'selected';} ?>>Левитация</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
-    <input name="priv" type="checkbox" <?php if ($errors['privacy']) {print 'class="error"';} ?> <?php if($values['privacy']==TRUE){print 'checked'} ?>> Вы согласны с пользовательским соглашением <br>
+    <input name="priv" type="checkbox" <?php if ($errors['privacy']) {print 'class="error"';} ?> <?php if($values['privacy']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
     <input type="submit" value="Отправить"/>
   </form>
   </div>
