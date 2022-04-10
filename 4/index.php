@@ -22,31 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors['privacy'] = !empty($_COOKIE['privacy_error']);
 
   if ($errors['fio']) {
-    setcookie('fio_error', '', 100000);
     $messages[] = '<div class="error">Заполните имя.</div>';
   }
   if ($errors['mail']) {
-    setcookie('mail_error', '', 100000);
     $messages[] = '<div class="error">Заполните или исправьте почту.</div>';
   }
   if ($errors['year']) {
-    setcookie('year_error', '', 100000);
     $messages[] = '<div class="error">Выберите год рождения.</div>';
   }
   if ($errors['sex']) {
-    setcookie('sex_error', '', 100000);
     $messages[] = '<div class="error">Выберите пол.</div>';
   }
   if ($errors['limb']) {
-    setcookie('limb_error', '', 100000);
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
   }
   if ($errors['powers']) {
-    setcookie('powers_error', '', 100000);
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
   }
   if ($errors['privacy']) {
-    setcookie('privacy_error', '', 100000);
     $messages[] = '<div class="error">Необходимо согласиться с политикой конфиденциальности.</div>';
   }
 
