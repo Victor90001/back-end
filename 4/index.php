@@ -68,6 +68,7 @@ if (empty($_POST['fio'])) {
 }
 else {
   setcookie('fio_value', $_POST['fio'], time() + 12*30 * 24 * 60 * 60);
+  setcookie('fio_error','',100000);
 }
 //проверка почты
 if (empty($_POST['mail']) or !filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL)) {
@@ -77,6 +78,7 @@ if (empty($_POST['mail']) or !filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL)) 
 }
 else {
   setcookie('mail_value', $_POST['mail'], time() + 12*30 * 24 * 60 * 60);
+  setcookie('mail_error','',100000);
 }
 //проверка года
 if ($_POST['year']=='Выбрать') {
@@ -86,6 +88,7 @@ if ($_POST['year']=='Выбрать') {
 }
 else {
   setcookie('year_value', intval($_POST['year']), time() + 12*30 * 24 * 60 * 60);
+  setcookie('year_error','',100000);
 }
 //проверка пола
 if (!isset($_POST['sex'])) {
@@ -95,6 +98,7 @@ if (!isset($_POST['sex'])) {
 }
 else {
   setcookie('sex_value', $_POST['sex'], time() + 12*30 * 24 * 60 * 60);
+  setcookie('sex_error','',100000);
 }
 //проверка конечностей
 if (!isset($_POST['limb'])) {
@@ -104,21 +108,32 @@ if (!isset($_POST['limb'])) {
 }
 else {
   setcookie('limb_value', $_POST['limb'], time() + 12*30 * 24 * 60 * 60);
+  setcookie('limb_error','',100000);
 }
 //проверка суперспособностей
-foreach($_POST['power'] as $power){
-  print_r($_POST['power']);
-  if ($power!='бессмертие' or $power!='прохождение сквозь стены' or $power!='левитация') {
-    setcookie('powers_error', '1', time() + 24 * 60 * 60);
-    setcookie('immortal_value', '', 100000);
-    setcookie('ghost_value', '', 100000);
-    setcookie('levitation_value', '', 100000);
-    $errors = TRUE;
+if (!isset($_POST['power'])) {
+  setcookie('powers_error', '1', time() + 24 * 60 * 60);
+  setcookie('immortal_value', '', 100000);
+  setcookie('ghost_value', '', 100000);
+  setcookie('levitation_value', '', 100000);
+  $errors = TRUE;
+}
+else {
+  $pwrs=$_POST['power'];
+  $a=array(
+    "immortal_value"=>0,
+    "ghost_value"=>0,
+    "levitation_value"=>0
+  );
+  foreach($pwrs as $pwr){
+    if($pwr=='immortal'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60); $a['immortal_value']=1;} 
+    if($pwr=='ghost'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);$a['ghost_value']=1;} 
+    if($pwr=='levitation'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);$a['levitation_value']=1;} 
   }
-  else {
-    if($power=='бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('immortal_value', '', 100000);}
-    if($power=='прохождение сквозь стены'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('ghost_value', '', 100000);}
-    if($power=='левитация'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('levitation_value', '', 100000);}
+  foreach($a as $c=>$val){
+    if($val==0){
+      setcookie($c,'',100000);
+    }
   }
 }
 //запись куки для биографии
@@ -131,6 +146,7 @@ if(!isset($_POST['priv'])){
 }
 else{
   setcookie('privacy_value',TRUE,time()+ 12*30*24*60*60);
+  setcookie('privacy_error','',100000);
 }
 
 if ($errors) {
