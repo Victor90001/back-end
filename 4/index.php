@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   include('form.php');
 }
 else{
-echo $_POST['power'];
+print $_POST['power'];
 // Проверяем ошибки.
 $errors = FALSE;
 //проверка имени
