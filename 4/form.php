@@ -54,15 +54,9 @@ if (!empty($messages)) {
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="power[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
-<<<<<<< HEAD
-      <option value="бессмертие" <?php if($values['immortal']==1){print 'select="selected"';} ?>>Бессмертие</option>
-      <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'select="selected"';} ?>>Прохождение сквозь стены</option>
-      <option value="левитация" <?php if($values['levitation']==1){print 'select="selected"';} ?>>Левитация</option>
-=======
       <option value="бессмертие" <?php if($values['immortal']==1){print 'selected';} ?>>Бессмертие</option>
       <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'selected';} ?>>Прохождение сквозь стены</option>
       <option value="левитация" <?php if($values['levitation']==1){print 'selected';} ?>>Левитация</option>
->>>>>>> ea6cd84c70b0885d7c71bc8ec9a8de7304e877ac
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
