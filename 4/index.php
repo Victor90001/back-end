@@ -107,6 +107,7 @@ else {
 }
 //проверка суперспособностей
 foreach($_POST['power'] as $power){
+  print_r($_POST['power']);
   if ($power!='бессмертие' or $power!='прохождение сквозь стены' or $power!='левитация') {
     setcookie('powers_error', '1', time() + 24 * 60 * 60);
     setcookie('immortal_value', '', 100000);
