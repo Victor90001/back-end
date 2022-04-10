@@ -90,7 +90,7 @@ if ($_POST['year']=='Выбрать') {
   $errors = TRUE;
 }
 else {
-  setcookie('year_value', $_POST['year'], time() + 12*30 * 24 * 60 * 60);
+  setcookie('year_value', intval($_POST['year']), time() + 12*30 * 24 * 60 * 60);
 }
 //проверка пола
 if (!isset($_POST['sex'])) {
