@@ -58,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   include('form.php');
 }
 else{
-echo $_POST['power'];
 // Проверяем ошибки.
 $errors = FALSE;
 //проверка имени
@@ -108,7 +107,7 @@ else {
 }
 //проверка суперспособностей
 foreach($_POST['power'] as $power){
-  if ($power!='бессмертие' and $power!='прохождение сквозь стены' and $power!='левитация') {
+  if ($power!='бессмертие' or $power!='прохождение сквозь стены' or $power!='левитация') {
     setcookie('powers_error', '1', time() + 24 * 60 * 60);
     setcookie('immortal_value', '', 100000);
     setcookie('ghost_value', '', 100000);
