@@ -42,24 +42,24 @@ if (!empty($messages)) {
     <!--<input name="year" type="date" /> <br>-->
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
-      <input name="sex" type="radio" value="M" <?php if($values['sex']=="M") {print 'checked'} ?>/> Мужчина
-      <input name="sex" type="radio" value="W" <?php if($values['sex']=="W") {print 'checked'} ?>/> Женщина
+      <input name="sex" type="radio" value="M" <?php if($values['sex']=="M") {print 'checked';} ?>/> Мужчина
+      <input name="sex" type="radio" value="W" <?php if($values['sex']=="W") {print 'checked';} ?>/> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div <?php if ($errors['limb']) {print 'class="error"';} ?>>
-      <input name="limb" type="radio" value="1" <?php if($values['limb']=="1") {print 'checked'} ?>/> 1 
-      <input name="limb" type="radio" value="2" <?php if($values['limb']=="2") {print 'checked'} ?>/> 2 
-      <input name="limb" type="radio" value="3" <?php if($values['limb']=="3") {print 'checked'} ?>/> 3 
-      <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked'} ?>/> 4 
+      <input name="limb" type="radio" value="1" <?php if($values['limb']=="1") {print 'checked';} ?>/> 1 
+      <input name="limb" type="radio" value="2" <?php if($values['limb']=="2") {print 'checked';} ?>/> 2 
+      <input name="limb" type="radio" value="3" <?php if($values['limb']=="3") {print 'checked';} ?>/> 3 
+      <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked';} ?>/> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="power[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
-      <option value="бессмертие" <?php if($values['immortal']==1){print 'select="selected"'}) ?>>Бессмертие</option>
-      <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'select="selected"'}) ?>>Прохождение сквозь стены</option>
-      <option value="левитация" <?php if($values['levitation']==1){print 'select="selected"'}) ?>>Левитация</option>
+      <option value="бессмертие" <?php if($values['immortal']==1){print 'select="selected"';}) ?>>Бессмертие</option>
+      <option value="прохождение сквозь стены" <?php if($values['ghost']==1){print 'select="selected"';}) ?>>Прохождение сквозь стены</option>
+      <option value="левитация" <?php if($values['levitation']==1){print 'select="selected"';}) ?>>Левитация</option>
     </select> <br>
     <label> Краткая биография </label> <br>
-    <textarea name="bio" rows="10" cols="15"><?php print $values['bio'] ?></textarea> <br>
+    <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
     <input name="priv" type="checkbox" <?php if ($errors['privacy']) {print 'class="error"';} ?> <?php if($values['privacy']==TRUE){print 'checked'} ?>> Вы согласны с пользовательским соглашением <br>
     <input type="submit" value="Отправить"/>
   </form>
