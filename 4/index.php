@@ -71,6 +71,7 @@ $errors = FALSE;
 //проверка имени
 if (empty($_POST['fio'])) {
   setcookie('fio_error', '1', time() + 24 * 60 * 60);
+  setcookie('fio_value', '', 100000);
   $errors = TRUE;
 }
 else {
@@ -79,6 +80,7 @@ else {
 //проверка почты
 if (empty($_POST['mail']) or !filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL)) {
   setcookie('mail_error', '1', time() + 24 * 60 * 60);
+  setcookie('mail_value', '', 100000);
   $errors = TRUE;
 }
 else {
@@ -87,6 +89,7 @@ else {
 //проверка года
 if ($_POST['year']=='Выбрать') {
   setcookie('year_error', '1', time() + 24 * 60 * 60);
+  setcookie('year_value', '', 100000);
   $errors = TRUE;
 }
 else {
@@ -95,6 +98,7 @@ else {
 //проверка пола
 if (!isset($_POST['sex'])) {
   setcookie('sex_error', '1', time() + 24 * 60 * 60);
+  setcookie('sex_value', '', 100000);
   $errors = TRUE;
 }
 else {
@@ -103,6 +107,7 @@ else {
 //проверка конечностей
 if (!isset($_POST['limb'])) {
   setcookie('limb_error', '1', time() + 24 * 60 * 60);
+  setcookie('limb_value', '', 100000);
   $errors = TRUE;
 }
 else {
@@ -112,12 +117,15 @@ else {
 foreach($_POST['power'] as $power){
   if ($power!='бессмертие' and $power!='прохождение сквозь стены' and $power!='левитация') {
     setcookie('powers_error', '1', time() + 24 * 60 * 60);
+    setcookie('immortal_value', '', 100000);
+    setcookie('ghost_value', '', 100000);
+    setcookie('levitation_value', '', 100000);
     $errors = TRUE;
   }
   else {
-    if($power=='бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60);}
-    if($power=='прохождение сквозь стены'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);}
-    if($power=='левитация'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);}
+    if($power=='бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('immortal_value', '', 100000);}
+    if($power=='прохождение сквозь стены'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('ghost_value', '', 100000);}
+    if($power=='левитация'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);} else{setcookie('levitation_value', '', 100000);}
   }
 }
 //запись куки для биографии
@@ -125,6 +133,7 @@ setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
 //проверка согласия с политикой конфиденциальности
 if(!isset($_POST['priv'])){
   setcookie('privacy_error','1',time()+ 24*60*60);
+  setcookie('privacy_value', '', 100000);
   $errors=TRUE;
 }
 else{
