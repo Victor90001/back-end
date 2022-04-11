@@ -126,9 +126,9 @@ else {
     "levitation_value"=>0
   );
   foreach($pwrs as $pwr){
-    if($pwr=='immortal'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60); $a['immortal_value']=1;} 
-    if($pwr=='ghost'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);$a['ghost_value']=1;} 
-    if($pwr=='levitation'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);$a['levitation_value']=1;} 
+    if($pwr=='бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60); $a['immortal_value']=1;} 
+    if($pwr=='прохождение сквозь стены'){setcookie('ghost_value', 1, time() + 12*30 * 24 * 60 * 60);$a['ghost_value']=1;} 
+    if($pwr=='левитация'){setcookie('levitation_value', 1, time() + 12*30 * 24 * 60 * 60);$a['levitation_value']=1;} 
   }
   foreach($a as $c=>$val){
     if($val==0){
