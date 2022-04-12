@@ -16,17 +16,18 @@ session_start();
 
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
 // Будем сохранять туда логин после успешной авторизации.
+
+/*print($_SESSION['login']);
 if (!empty($_SESSION['login'])) {
-  // Если есть логин в сессии, то пользователь уже авторизован.
-  // TODO: Сделать выход (окончание сессии вызовом session_destroy()
-  //при нажатии на кнопку Выход).
-  // Делаем перенаправление на форму.
-  header('Location: ./');
-}
+  header('Location: index.php');
+}*/
 
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  if (!empty($_SESSION['login'])) {
+  header('Location: index.php');
+  }else{
 ?>
 <style>
   .form-sign-in{
@@ -37,12 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </style>
 <div class="form-sign-in">
 <form action="login.php" method="post">
-  <input name="login" /><br>
-  <input name="pass" /><br>
+  <input name="login" /> Логин<br>
+  <input name="pass" type="password"/> Пароль<br>
   <input type="submit" value="Войти" />
 </form>
 </div>
 <?php
+  }
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
 else {
@@ -52,37 +54,35 @@ else {
   $l=$_POST['login'];
   $p=$_POST['pass'];
   $uid=0;
-  $error=FALSE;
+  $error=TRUE;
   $user = 'u41026';
   $pass = '4433573';
   $db1 = new PDO('mysql:host=localhost;dbname=u41026', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-  try{
-    $chk=$db1->prepare("select id,login,pass from username");
-    $chk->execute();
-    $usernames=$chk->fetchALL();
-    foreach($usernames as $username){
-      if($username['login']==$l and password_verify($p,$username['pass'])){
-        $uid=$username['id'];
-        print($uid);
+  if(!empty($l) and !empty($p)){
+    try{
+      $chk=$db1->prepare("select * from username where login=?");
+      $chk->bindParam(1,$l);
+      $chk->execute();
+      $username=$chk->fetchALL();
+      if(password_verify($p,$username[0]['pass'])){
+        $uid=$username[0]['id'];
         $error=FALSE;
       }
     }
-  }
-  catch(PDOException $e){
-    print('Error : ' . $e->getMessage());
-    exit();
+    catch(PDOException $e){
+      print('Error : ' . $e->getMessage());
+      exit();
+    }
   }
   if($error==TRUE){
-    print('Исправьте ошибки <br>');
+    print('Неправильные логин или пароль <br> Если вы хотите создать нового пользователя <a href="index.php">назад</a> или попытайтесь войти снова <a href="login.php">войти</a>');
     session_destroy();
     exit();
   }
   // Если все ок, то авторизуем пользователя.
   $_SESSION['login'] = $l;
-  print_r($_SESSION['login'].' ');
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
-  print_r($_SESSION['uid']);
   // Делаем перенаправление.
-  header('Location: /');
+  header('Location: index.php');
 }
