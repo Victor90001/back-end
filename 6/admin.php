@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   if (empty($_SERVER['PHP_AUTH_USER']) ||
       empty($_SERVER['PHP_AUTH_PW']) ||
       $_SERVER['PHP_AUTH_USER'] != 'admin' ||
-      md5($_SERVER['PHP_AUTH_PW']) != md5($pass_hash)) {
+      md5($_SERVER['PHP_AUTH_PW']) != $pass_hash) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   }
   $users=$inf;
   $pwrs=$inf2;
-  include('table1.php');
+  include('table.php');
 }
 else{
   
