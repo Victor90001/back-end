@@ -20,7 +20,7 @@ $conf = array(
   'date_format' => 'Y.m.d',
   'date_format_2' => 'Y.m.d H:i',
   'date_format_3' => 'd.m.Y',
-  'basedir' => '/framework',
+  'basedir' => '/8',
   'login' => 'admin',
   'password' => '123',
   'admin_mail' => 's0160101@edu.kubsu.ru',
@@ -33,8 +33,9 @@ $conf = array(
 // Определения ресурсов для диспатчера.
 $urlconf = array(
   '' => array('module' => 'front'),
-  '/^admin$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
-  '/^admin\/(\d+)$/' => array('module' => 'admin', 'auth' => 'auth_basic'),
+  '/^login$/'=>array('module'=> 'login'),
+  '/^admin\/*$/' => array('module' => 'admin', 'auth' => 'auth_basic', 'tpl' => 'admin'),
+  '/^admin\/(\d+)\/*(edit)*$/' => array('module' => 'admin', 'auth' => 'auth_basic', 'tpl' => 'admin'),
   /*  
   '/^order\/(\d+)$/' => array('module' => 'order', 'auth' => 'auth_db_basic'),
   '/^order\/(\d+)\/add$/' => array('module' => 'order_add', 'auth' => 'auth_db_basic'),

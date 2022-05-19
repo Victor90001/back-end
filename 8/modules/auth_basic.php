@@ -4,9 +4,10 @@
 //##################################################
 
 function auth(&$request, $r) {
-  // TODO: запрашивать пользователя из БД.
+  require_once('db.php');
+  $admin_pass=db_get('administration','password','username','admin');
   $users = array(
-    'admin' => '123',
+    'admin' => $admin_pass,
   );
   if (empty($user) && !empty($_SERVER['PHP_AUTH_USER'])) {
     $user = array(
@@ -15,7 +16,7 @@ function auth(&$request, $r) {
     );
     $request['user'] = $user;
   }
-  if (!isset($_SERVER['PHP_AUTH_USER']) || empty($user) || $_SERVER['PHP_AUTH_USER'] != $user['login'] || $_SERVER['PHP_AUTH_PW'] != $user['pass']) {
+  if (!isset($_SERVER['PHP_AUTH_USER']) || empty($user) || $_SERVER['PHP_AUTH_USER'] != $user['login'] || md5($_SERVER['PHP_AUTH_PW']) != $user['pass']) {
     unset($user);
     $response = array(
       'headers' => array(sprintf('WWW-Authenticate: Basic realm="%s"', conf('sitename')), 'HTTP/1.0 401 Unauthorized'),
