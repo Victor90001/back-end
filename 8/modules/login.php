@@ -1,7 +1,8 @@
 <?php
 function login_get($request){
+  session_start();
   if (!empty($_SESSION['login'])) {
-    return redirect('');
+    return redirect(' ');
   }
   else{
     return theme('login');
@@ -17,6 +18,7 @@ function login_post(){
     if(!empty($l) and !empty($p)){
         try{
             $pass=db_get('username','pass','login',$l);
+print $pass;
             if(password_verify($p,$pass)){
                 $uid=db_get('username','id','login',$l);
                 $error=FALSE;
@@ -36,5 +38,5 @@ function login_post(){
     // Записываем ID пользователя.
     $_SESSION['uid'] = $uid;
     // Делаем перенаправление.
-    return redirect('');
+    return redirect(' ');
 }

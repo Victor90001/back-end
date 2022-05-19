@@ -23,7 +23,7 @@ function front_get($request) {
     dropcookie('pass_in');
     $messages[] = 'Спасибо, результаты сохранены.';
     if (!empty($_COOKIE['pass_in'])) {
-      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> с логином <strong>%s</strong> и паролем <strong>%s</strong> для изменения данных.',strip_tags($_COOKIE['login']),strip_tags($_COOKIE['pass_in']));
+      $messages[] = sprintf('Вы можете <a href="login">войти</a> с логином <strong>%s</strong> и паролем <strong>%s</strong> для изменения данных.',strip_tags($_COOKIE['login']),strip_tags($_COOKIE['pass_in']));
     }
     foreach($_COOKIE as $key=>$value){
       dropcookie($key);
@@ -181,7 +181,6 @@ function front_post($request) {
               insert_powers_DB($_POST[$key],'powers','power',$id);
             }
           }
-
           foreach($user_keys as $key){
             db_set('username',$key,'id',$id,$user[$key]);
           }

@@ -96,10 +96,8 @@ function db_set($table_name,$column,$def,$name, $value) {
     return;
   }
   $v = db_get($table_name,$column,$def,$name);
-  var_dump($v);
   if ($v === FALSE) {
     $q = "INSERT INTO ".$table_name." (".$column.",".$def.") VALUES (?,?)";
-    print $q.' '.$value.' '.$name.'<br>';
     return db_command($q,$value,$name) > 0;
   }
   else {
