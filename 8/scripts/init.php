@@ -12,7 +12,7 @@ function init($request = array(), $urlconf = array()) {
   $response = array();
 
   // Шаблон страницы по умолчанию.
-  $template = 'page';
+  //$template = 'page';
 
   // Массив текущего вывода модулей.
   $c = array();
@@ -21,6 +21,7 @@ function init($request = array(), $urlconf = array()) {
   // вызываем процедуры их модулей, соответствующие методу HTTP-запроса.
   $q = isset($request['url']) ? $request['url'] : '';
   $method = isset($request['method']) ? $request['method'] : 'get';
+  $module='';
   foreach ($urlconf as $url => $r) {
     $matches = array();
     if ($url == '' || $url[0] != '/') {
@@ -45,9 +46,9 @@ function init($request = array(), $urlconf = array()) {
       }
     }
     // Шаблон всей страницы можно перекрыть для обрабатываемого ресурса в $urlconf.
-    if (isset($r['tpl'])) {
+    /*if (isset($r['tpl'])) {
       $template = $r['tpl'];
-    }
+    }*/
     // Обработка запроса модулем.
     if (!isset($r['module'])) {
       continue;
@@ -58,7 +59,6 @@ function init($request = array(), $urlconf = array()) {
     if (!function_exists($func)) {
       continue;
     }
-
     // Собираем параметры в массив.
     $params = array('request' => $request);
     array_shift($matches);
@@ -78,13 +78,14 @@ function init($request = array(), $urlconf = array()) {
       }
       else {
         $c['#content'][$r['module']] = $result;
+        $module=$r['module'];
       }
     }
   }
   // Если есть вывод модулей, то выводим его через шаблон страницы или шаблон в $urlconf.
   if (!empty($c)) {
     $c['#request'] = $request;
-    $response['entity'] = theme($template, $c);
+    $response['entity'] = $c['#content'][$module];
   }
   else {
     $response = not_found();
@@ -152,7 +153,6 @@ function not_found() {
 function theme($t, $c = array()) {
   // Путь к файлу шаблона.
   $template = conf('theme') . '/' . str_replace('/', '_', $t) . '.tpl.php';
-
   // Если нет файла шаблона, то просто печатаем данные слитно.
   if (!file_exists($template)) {
     return implode('', $c);

@@ -8,7 +8,6 @@ ini_set('display_errors', DISPLAY_ERRORS);
 
 // Папки со скриптами и модулями.
 ini_set('include_path', INCLUDE_PATH);
-
 include('init.php');
 $request = array(
   'url' => isset($_GET['q']) ? $_GET['q'] : '',
