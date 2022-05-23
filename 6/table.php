@@ -16,7 +16,7 @@
     <table border="1">
       <tr>
         <th>Name</th>
-        <th>Mail</th>
+        <th>Email</th>
         <th>Year</th>
         <th>Sex</th>
         <th>Limb</th>
@@ -28,8 +28,8 @@
           echo '
             <tr>
               <td>'.$user['name'].'</td>
-              <td>'.$user['mail'].'</td>
-              <td>'.$user['date'].'</td>
+              <td>'.$user['email'].'</td>
+              <td>'.$user['year'].'</td>
               <td>'.$user['sex'].'</td>
               <td>'.$user['limb'].'</td>
               <td>';
