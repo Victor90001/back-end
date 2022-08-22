@@ -37,6 +37,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $get2=$db->prepare("select id,power from powers");
     $get2->execute();
     $inf2=$get2->fetchALL();
+    echo '<pre>';
+    print_r($inf2);
+    echo '</pre>';
     $count=$db->prepare("select count(*) from powers where power=?");
     foreach($pwr_def as $pw){
       $i=0;
